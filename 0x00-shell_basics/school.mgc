@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -1 | while read -r filename; do file -b --mime-type "$filename" | awk -F ":" '{ print $1": "$2 }'; done
+ls -1 | while read -r filename; do echo -n "$filename: "; file -b --mime-type "$filename"; done
