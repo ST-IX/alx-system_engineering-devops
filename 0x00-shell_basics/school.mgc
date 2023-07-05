@@ -1,2 +1,2 @@
 #!/bin/bash
-{ echo -e "0       string  SCHOOL  School data file" > school.magic; file -C -m school.magic school.mgc; }
+ls -1 | xargs -I {} sh -c 'file -b --mime-type {} | awk "{ printf \"%s: %s\\n\", \"$1\", \$0 }"' | sort -k1 -t- -n
