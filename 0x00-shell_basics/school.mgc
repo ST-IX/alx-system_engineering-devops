@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -1 | xargs -I {} sh -c 'file -b --mime-type {} | awk "{ printf \"%s: %s\\n\", \"$1\", \$0 }"' | sort -k1 -t- -n
+ls -1 | while read -r filename; do file -b --mime-type "$filename" | awk -F ":" '{ print $1": "$2 }'; done
