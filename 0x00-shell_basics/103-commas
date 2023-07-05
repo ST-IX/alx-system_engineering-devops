@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -1ad . .. * | awk 'BEGIN { sep=""; } { if (!/[[:alnum:]]/ && length($0) > 1) { printf "%s%s/", sep, $0; sep=", "; } else if ($0 ~ /^[[:alnum:]]/) { printf "%s%s", sep, $0; sep=", "; } else { printf "%s_%s", sep, $0; sep=", "; } } END { print "" }'
+ls -1ad . .. * | awk 'BEGIN { sep=""; } { if (($0 == ".") || ($0 == "..")) { printf "%s%s/", sep, $0; sep=", "; } else if ($0 ~ /^[[:alnum:]]/) { printf "%s%s", sep, $0; sep=", "; } else { printf "%s_%s", sep, $0; sep=", "; } } END { printf "\n" }'
