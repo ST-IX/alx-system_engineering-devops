@@ -1,2 +1,3 @@
 #!/bin/bash
-ls -1 | while read -r filename; do echo -n "$filename: "; file -b --mime-type "$filename"; done
+ls -1 | while read -r filename; do echo "$filename: $(file -b --mime-type "$filename")"; done
+
